@@ -9,7 +9,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 06/13/20
+   * Date Modified: 06/11/20
 """
 """
    * Changelog:
@@ -136,21 +136,21 @@ class App(QMainWindow):
         def Marine():
             themeConfig.set('theme', 'key1', 'marine')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
         def Spacex():
             themeConfig.set('theme', 'key1', 'spaceX')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
         def broco():
             themeConfig.set('theme', 'key1', 'broco')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
@@ -163,7 +163,7 @@ class App(QMainWindow):
         def newest():
             themeConfig.set('articleSorting', 'key1', 'Newest')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
@@ -171,7 +171,7 @@ class App(QMainWindow):
         def oldest():
             themeConfig.set('articleSorting', 'key1', 'Oldest')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
@@ -184,7 +184,7 @@ class App(QMainWindow):
         def newestHubble():
             themeConfig.set('hubbleSorting', 'key1', 'Newest')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
@@ -192,7 +192,7 @@ class App(QMainWindow):
         def oldestHubble():
             themeConfig.set('hubbleSorting', 'key1', 'Oldest')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
             restart_program()
 
@@ -224,9 +224,9 @@ class App(QMainWindow):
 
         global sortingSelected, HubblesortingSelected
 
-        if not os.path.isfile("~/.AstroNinja/config.ini"):
+        if not os.path.isfile("config.ini"):
             themeConfig = ConfigParser()
-            themeConfig.read('~/.AstroNinja/config.ini')
+            themeConfig.read('config.ini')
             themeConfig.add_section('theme')
             themeConfig.set('theme', 'key1', 'spaceX')
             themeSelected = themeConfig.get('theme', 'key1')
@@ -239,11 +239,11 @@ class App(QMainWindow):
             themeConfig.set('hubbleSorting', 'key1', 'Newest')
             HubblesortingSelected = themeConfig.get('hubbleSorting', 'key1')
 
-            with open('~/.AstroNinja/config.ini', 'w') as f:
+            with open('config.ini', 'w') as f:
                 themeConfig.write(f)
-        elif os.path.isfile("~/.AstroNinja/config.ini"):
+        elif os.path.isfile("config.ini"):
             themeConfig = ConfigParser()
-            themeConfig.read("~/.AstroNinja/config.ini")
+            themeConfig.read("config.ini")
             themeSelected = themeConfig.get('theme', 'key1')
             # Getting the sorting setting last set by the user.
             #global sortingSelected

@@ -6,7 +6,7 @@
 # Modified: 06/13/2020
 
 # First, we need to install the proper python 3 Libraries
-sudo apt-get install -y python3-pip python3-pyqt5 python3-dateutil python3-tk python3-pyqt5.qtwebengine
+sudo apt-get install -y python3-pip python3-pyqt5 python3-dateutil python3-tk python3-pyqt5.qtwebengine python3-setuptools
 
 # Next we install the libaries installed by pip
 sudo pip3 install matplotlib

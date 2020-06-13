@@ -8,11 +8,11 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created: 01/11/18
-   * Date Modified: 06/11/20
+   * Date Modified: 06/13/20
 """
 
 import AstroNinjaMain
-import astroNinja
+import astroNinjaV85
 import time, os
 import calendar
 from dateutil import parser
@@ -41,9 +41,9 @@ class ItemCollectorPipeline(object):
 def tally_ho(x, y):
 
     # tally_ho uses functions from astroNinja to tally the launch counts.
-    astroNinja.getSchedule()
-    astroNinja.scheduleList.append('Ah')
-    astroNinja.launchHead2.append('Ah')
+    astroNinjaV85.getSchedule()
+    astroNinjaV85.scheduleList.append('Ah')
+    astroNinjaV85.launchHead2.append('Ah')
     #print(astroNinja.launchHead2)
     # The variables that keep count of the agency Tallies
     global spaceXCount
@@ -107,27 +107,27 @@ def tally_ho(x, y):
         # If launch is in the current month and matches with keywords, then add to the tally variable for that agency.
         # Then increment both month count and mission count by 4.
         if todaySlice == a and changedSlice >= todaydateStr :
-             if 'SpaceX' in astroNinja.scheduleList[y]:
+             if 'SpaceX' in astroNinjaV85.scheduleList[y]:
                  spaceXCount += 1
-             elif 'Chinese' in astroNinja.scheduleList[y]:
+             elif 'Chinese' in astroNinjaV85.scheduleList[y]:
                  chinaCount += 1
-             elif 'Arianespace' in astroNinja.scheduleList[y]:
+             elif 'Arianespace' in astroNinjaV85.scheduleList[y]:
                  arianeCount += 1
-             elif 'India' in astroNinja.scheduleList[y]:
+             elif 'India' in astroNinjaV85.scheduleList[y]:
                  indiaCount += 1
-             elif 'United Launch Alliance' in astroNinja.scheduleList[y]:
+             elif 'United Launch Alliance' in astroNinjaV85.scheduleList[y]:
                  ulaCount += 1
-             elif 'Rocket Lab' in astroNinja.scheduleList[y]:
+             elif 'Rocket Lab' in astroNinjaV85.scheduleList[y]:
                  rocketCount += 1
-             elif 'Japan' in astroNinja.scheduleList[y]:
+             elif 'Japan' in astroNinjaV85.scheduleList[y]:
                  japaneseCount += 1
-             elif 'Russian' in astroNinja.scheduleList[y]:
+             elif 'Russian' in astroNinjaV85.scheduleList[y]:
                  russiaCount += 1
-             elif 'Eurockot' in astroNinja.scheduleList[y]:
+             elif 'Eurockot' in astroNinjaV85.scheduleList[y]:
                  euroCount += 1
              elif 'Northrop Grumman' and 'International Launch Services' not in astroNinja.scheduleList[y]:
                  northCount += 1
-             elif 'Virgin Orbit' in astroNinja.scheduleList[y]:
+             elif 'Virgin Orbit' in astroNinjaV85.scheduleList[y]:
                  virginCount += 1
 
 
@@ -139,8 +139,8 @@ def tally_ho(x, y):
     while x != 60 and y != 67:
 
         # First we start with some conditionals that check for breaking characters in the launch month and correct them before continuing
-        if 'Approx.' in astroNinja.scheduleList[x] :
-            later = astroNinja.scheduleList[x].replace('Approx. ', '') # removing breaking characters
+        if 'Approx.' in astroNinjaV85.scheduleList[x] :
+            later = astroNinjaV85.scheduleList[x].replace('Approx. ', '') # removing breaking characters
             slicy = later[0:3]
 
             the_cleaner(slicy, my_date)
@@ -158,8 +158,8 @@ def tally_ho(x, y):
                 y += 4
 
 
-        elif 'Mid-' in astroNinja.scheduleList[x] and 'Mid-2019' not in astroNinja.scheduleList[x]:
-            later = astroNinja.scheduleList[x].replace('Mid-', '') # removing breaking characters
+        elif 'Mid-' in astroNinjaV85.scheduleList[x] and 'Mid-2019' not in astroNinjaV85.scheduleList[x]:
+            later = astroNinjaV85.scheduleList[x].replace('Mid-', '') # removing breaking characters
             slicy = later[0:3]
 
             the_cleaner(slicy, my_date)
@@ -177,8 +177,8 @@ def tally_ho(x, y):
                 y += 4
 
 
-        elif 'Late' in str(astroNinja.scheduleList[x]):
-            later = astroNinja.scheduleList[x].replace('Late ', '') # removing breaking characters
+        elif 'Late' in str(astroNinjaV85.scheduleList[x]):
+            later = astroNinjaV85.scheduleList[x].replace('Late ', '') # removing breaking characters
 
             the_cleaner(later, my_date)
 
@@ -194,8 +194,8 @@ def tally_ho(x, y):
                 x += 4
                 y += 4
 
-        elif 'Mid/Late' in astroNinja.scheduleList[x] :
-            later = astroNinja.scheduleList[x].replace('Mid/Late ', '') # removing breaking characters
+        elif 'Mid/Late' in astroNinjaV85.scheduleList[x] :
+            later = astroNinjaV85.scheduleList[x].replace('Mid/Late ', '') # removing breaking characters
 
             the_cleaner(later, my_date)
 
@@ -211,8 +211,8 @@ def tally_ho(x, y):
                 x += 4
                 y += 4
 
-        elif '/' and 'NET' in astroNinja.scheduleList[x]:
-            monthString = astroNinja.scheduleList[x]
+        elif '/' and 'NET' in astroNinjaV85.scheduleList[x]:
+            monthString = astroNinjaV85.scheduleList[x]
             noNet = monthString[4:]
             noSlash = noNet[0:3]               # Removing breaking characters
 
@@ -230,8 +230,8 @@ def tally_ho(x, y):
                 x += 4
                 y += 4
 
-        elif '/' in astroNinja.scheduleList[x]:
-            monthString = astroNinja.scheduleList[x]
+        elif '/' in astroNinjaV85.scheduleList[x]:
+            monthString = astroNinjaV85.scheduleList[x]
             noSlash = re.sub('/.*', '', monthString)
 
             the_cleaner(noSlash, my_date)
@@ -249,8 +249,8 @@ def tally_ho(x, y):
                 y += 4
 
 
-        elif 'NET' in astroNinja.scheduleList[x]:
-            netMonth = astroNinja.scheduleList[x]
+        elif 'NET' in astroNinjaV85.scheduleList[x]:
+            netMonth = astroNinjaV85.scheduleList[x]
             noNet = netMonth[4:]      # cutting out characters that cause a crash and miscount.
 
             the_cleaner(noNet, my_date)
@@ -268,13 +268,13 @@ def tally_ho(x, y):
                 y += 4
 
         # checking for any of the vague launch dates that cause breakage.
-        elif any(word in astroNinja.scheduleList[x] for word in brokenDates) :
+        elif any(word in astroNinjaV85.scheduleList[x] for word in brokenDates) :
             x += 4
             y += 4
 
         else:
 
-            the_cleaner(astroNinja.scheduleList[x], my_date)
+            the_cleaner(astroNinjaV85.scheduleList[x], my_date)
 
             if todaySlice != changedSlice2 and changedSlice <= todaydateStr:
                 x += 4

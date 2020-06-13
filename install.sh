@@ -3,7 +3,7 @@
 # A simple Bash shell script that installs packages depended on by AstroNinja
 # Created by: Tom Mullins
 # Created: 10/01/2018
-# Modified: 06/11/2020
+# Modified: 06/13/2020
 
 # First, we need to install the proper python 3 Libraries
 sudo apt-get install -y python3-pip python3-pyqt5 python3-dateutil python3-tk python3-pyqt5.qtwebengine
@@ -16,6 +16,9 @@ sudo pip3 install scrapy
 
 # copying the files to a . folder.
 mkdir /home/$USER/.AstroNinja
+
+chmod +x /home/$USER/.AstroNinja/AstroNinja.desktop
+mv /home/$USER/.AstroNinja/AstroNinja.desktop /home/$USER/Desktop
 
 cd "${0%/*}"
 cp -r ./* /home/$USER/.AstroNinja

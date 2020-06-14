@@ -20,10 +20,10 @@ chmod +x install.sh
 
 nano ~/Desktop/AstroNinja.desktop
 
-# Change username to your username in "icon" and "application" lines.
+2) Change username to your username in "icon" and "application" lines.
 
 chmod +x ~/Desktop/AstroNinja.desktop
 
 chmod +x ~/.AstroNinja/AstroNinjaMain.py
 
-# Ubuntu and Pop users, right-click on AstroNinja desktop icon and click "Allow Launching"
+2) Ubuntu and Pop users, right-click on AstroNinja desktop icon and click "Allow Launching"

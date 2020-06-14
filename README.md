@@ -8,22 +8,22 @@ AstroNinja is an all-around tracker of the space industry. It has launch schedul
 
 1) Open A Terminal
 
-  cd ~/Downloads/
+	cd ~/Downloads/
 
-  git clone https://github.com/shiroininjaTech/AstroNinja-Alpha.git
+  	git clone https://github.com/shiroininjaTech/AstroNinja-Alpha.git
 
-  cd AstroNinja-Alpha/
+  	cd AstroNinja-Alpha/
 
-  chmod +x install.sh
+  	chmod +x install.sh
 
-  ./install.sh
+  	./install.sh
 
-  nano ~/Desktop/AstroNinja.desktop
+  	nano ~/Desktop/AstroNinja.desktop
 
 2) Change username to your username in "icon" and "application" lines.
 
-  chmod +x ~/Desktop/AstroNinja.desktop
+  	chmod +x ~/Desktop/AstroNinja.desktop
 
-  chmod +x ~/.AstroNinja/AstroNinjaMain.py
+  	chmod +x ~/.AstroNinja/AstroNinjaMain.py
 
 3) Ubuntu and Pop users, right-click on AstroNinja desktop icon and click "Allow Launching"

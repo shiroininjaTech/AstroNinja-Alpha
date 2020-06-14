@@ -6,7 +6,7 @@
 # Modified: 06/14/2020
 
 # Installing libraries needed using pacman
-sudo pacman -S python3-pip python3-pyqt5 python3-dateutil python3-tk python3-pyqt5.qtwebengine python3-setuptools
+sudo pacman -S python-pip python3-pyqt5 python-dateutil python-tk python-pyqt5.qtwebengine python-setuptools
 
 # Next we install the libaries installed by pip
 sudo pip3 install matplotlib

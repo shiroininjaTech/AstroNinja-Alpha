@@ -17,12 +17,11 @@ sudo pip3 install scrapy
 # copying the files to a . folder.
 mkdir /home/$USER/.AstroNinja
 
-chmod +x /home/$USER/.AstroNinja/AstroNinja.desktop
-mv /home/$USER/.AstroNinja/AstroNinja.desktop /home/$USER/Desktop
-
 cd "${0%/*}"
 cp -r ./* /home/$USER/.AstroNinja
 
+chmod +x /home/$USER/.AstroNinja/AstroNinja.desktop
+mv /home/$USER/.AstroNinja/AstroNinja.desktop /home/$USER/Desktop/
 
 # Getting which distro the user is running
 if [ -f /etc/os-release ]; then

@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=AstroNinja
-Icon=~/.AstroNinja/Images/Icons/rocket.png
-Exec=python3 ~./AstroNinja/AstroNinjaMain.py
+Name =AstroNinja
+Icon = /home/shiroininja/.AstroNinja/Images/Icons/rocket.png
+Exec=python3 /home/shiroininja/.AstroNinja/AstroNinjaMain.py
 Terminal=false
 Type=Application

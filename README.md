@@ -27,3 +27,6 @@ AstroNinja is an all-around tracker of the space industry. It has launch schedul
   	chmod +x ~/.AstroNinja/AstroNinjaMain.py
 
 3) Ubuntu and Pop users, right-click on AstroNinja desktop icon and click "Allow Launching"
+4) It can also be launched from the terminal via:
+
+	python3 AstroNinjaMain.py

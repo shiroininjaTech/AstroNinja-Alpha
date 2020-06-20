@@ -4,7 +4,7 @@ AstroNinja is an all-around tracker of the space industry. It has launch schedul
 
 # Installation
 
-# Debian-based Distros : Linux Mint/Ubuntu/Pop!OS
+## Debian-based Distros : Linux Mint/Ubuntu/Pop!OS
 
 1) Open A Terminal
 
@@ -30,3 +30,8 @@ AstroNinja is an all-around tracker of the space industry. It has launch schedul
 4) It can also be launched from the terminal via:
 
 	python3 AstroNinjaMain.py
+
+# License
+
+This software is licensed under the GPL v3 license. 
+

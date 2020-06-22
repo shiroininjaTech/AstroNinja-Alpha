@@ -2,14 +2,13 @@
 
 """
    This the Library file for the front end modules for AstroNinja, a space launch tracker and space news app for the
-   Linux desktop. It scrapes data from spacelaunchnow.com and displays it in an interactive GUI using beautiful soup
-   and PyQt5.
+   Linux desktop. It scrapes data from across the web and displays it in an interactive GUI using scrapy and PyQt5.
 """
 """
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 06/13/20
+   * Date Modified: 06/22/20
 """
 """
    * Changelog:
@@ -39,6 +38,16 @@
    *                to the next launch item on welcome page. Added new logos for newly reported companies in launch schedule.
    *                Added the ability to reload window via menu and when choosing a new UI theme. Redesign of Welcome tab.
    *                Added SpaceX lens, a portal to video of the company's last launch or livestream of the current launch. Various bug fixes.
+   *
+   * Version 0.85: Alpha release. This version included the full rewriting of all backend web scraping and data cleansing modules
+   *                to switch from beautifulSoup4 to Scrapy spiders. New features added include: ISS Portal tab, as well as launch history graphs and
+                    added more sources to the news tab. This version also added the Mars weather section to the welcome tab. The astroTheme module was also Refactored
+                    to make it more compatible with a new release of PyQt5. Several bug fixes have been done, such as solving crashing when an article has no image,
+                    and catching crashes caused by the scraping of the launch schedule. Many modules were also refactored to remove hundreds of lines of repetitive code using
+                    functions. As this is the alpha version of the app, an install script was included as well.
+
+
+
 """
 
 import re
@@ -93,7 +102,7 @@ class App(QMainWindow):
 
         #self.setGeometry(0, 0, 0, 0)
         self.setWindowTitle('AstroNinja')
-        self.setWindowIcon(QIcon(os.path.expanduser("Images/Icons/rocket.png")))
+        self.setWindowIcon(QIcon(os.path.expanduser("~/.AstroNinja/Images/Icons/rocket.png")))
 
         #self.showMaximized()
         self.initUI()
@@ -110,7 +119,7 @@ class App(QMainWindow):
             aboutBox = QMessageBox()
             aboutBox.setIcon(QMessageBox.Question)
             aboutBox.setWindowTitle("About AstroNinja")
-            aboutBox.setText("Version 0.80 TESTING\nCreated By: ShirioNinja Development")
+            aboutBox.setText("Version 0.85 Alpha\nCreated By: Tom Mullins")
             aboutBox.exec_()
 
         def sourceMethod(self):

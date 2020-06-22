@@ -2,14 +2,14 @@ from __future__ import unicode_literals
 
 """
    This the Library file for the backend modules for AstroNinja, a space launch tracker and space news app for the
-   Linux desktop. It scrapes data from spacelaunchnow.com and displays it in an interactive GUI using beautiful soup
+   Linux desktop. It scrapes data from spacelaunchnow.com and displays it in an interactive GUI using scrapy
    and PyQt5.
 """
 """
    * Written By: Tom Mullins
-   * Version: 0.50
+   * Version: 0.85
    * Date Created: 10/03/17
-   * Date Modified: 02/07/2020
+   * Date Modified: 06/22/2020
 """
 """
    * Changelog:

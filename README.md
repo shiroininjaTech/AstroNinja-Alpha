@@ -33,5 +33,5 @@ python3 AstroNinjaMain.py
 ```
 ## License
 
-This software is licensed under the GPL v3 license. 
+This software is licensed under the GPLv3 license. 
 

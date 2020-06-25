@@ -17,9 +17,14 @@ cd AstroNinja-Alpha/
 ```bash
 chmod +x install.sh
 ./install.sh
+```
+
+- Change username to your username in "icon" and "application" lines in the AstroNinja.desktop file using nano or a text editor:
+
+```bash
 nano ~/Desktop/AstroNinja.desktop
 ```
-- Change username to your username in "icon" and "application" lines in the AstroNinja.desktop file
+
 
 ### Use AstroNinja
 Ubuntu and Pop users: right-click on AstroNinja desktop icon and click "Allow Launching".

@@ -125,7 +125,7 @@ def tally_ho(x, y):
                  russiaCount += 1
              elif 'Eurockot' in astroNinjaV85.scheduleList[y]:
                  euroCount += 1
-             elif 'Northrop Grumman' and 'International Launch Services' not in astroNinja.scheduleList[y]:
+             elif 'Northrop Grumman' and 'International Launch Services' not in astroNinjaV85.scheduleList[y]:
                  northCount += 1
              elif 'Virgin Orbit' in astroNinjaV85.scheduleList[y]:
                  virginCount += 1

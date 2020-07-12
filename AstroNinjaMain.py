@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 06/22/20
+   * Date Modified: 07/12/20
 """
 """
    * Changelog:
@@ -75,7 +75,7 @@ import astroNinjaV85
 from PyQt5 import QtWebEngineWidgets
 from PyQt5 import QtWebEngineCore
 from PyQt5.QtWebEngineWidgets import QWebEngineSettings
-import youtubeTest
+#import youtubeTest
 import xNewsV85
 import issPortal
 import scrapy
@@ -621,6 +621,7 @@ class App(QMainWindow):
         # Also will enable the livestreaming of launches.
 
         # Building the SpaceX Lens object
+        """
         frameBuilder(scroll.layout, 3, 1, 750, False)
         frameLayout.addItem(horizSpacer, 1, 1)
         vert_Spacer(frameLayout, 20, 20)
@@ -638,9 +639,9 @@ class App(QMainWindow):
         missionTitle = "%s" % youtubeTest.newestName
         headerBuild(missionTitle, 0, 2, frameLayout, 50)
         """
-            Use a smaller font for the mission title if it's
-            longer than 25 char. This prevents cutting off of
-            parts of the header.
+            #Use a smaller font for the mission title if it's
+            #longer than 25 char. This prevents cutting off of
+            #parts of the header.
         """
         if len(missionTitle) >= 25:
             self.header.setFont(smallerHeader)
@@ -650,7 +651,7 @@ class App(QMainWindow):
         vDivider.setFrameShape(QFrame.VLine)
         vDivider.setLineWidth(3)
         frameLayout.addWidget(vDivider, 0, 1)
-
+        """
         #============================================================================================================================
         # Adding the Mars Weather service to AstroNinja.
         # A simple embed using QtWebEngineWidgets as a container.
@@ -658,7 +659,7 @@ class App(QMainWindow):
         #============================================================================================================================
 
         # Building the Mars Meteorologist  Object
-        frameBuilder(scroll.layout, 4, 1, 750, False)
+        frameBuilder(scroll.layout, 3, 1, 750, False)
         frameLayout.addItem(horizSpacer, 1, 1)
         vert_Spacer(frameLayout, 20, 20)
         web_wrapper("https://mars.nasa.gov/layout/embed/image/insightweather/", 720, frameLayout, 2, 1)
@@ -688,7 +689,7 @@ class App(QMainWindow):
         # The Organizations
         orgs = ('SpaceX', 'China', 'JAXA', 'ULA', 'Rocket\nLabs', 'India', 'ArianeSpace', 'Russia', 'Northrop', 'Eurockot', 'Virgin\nOrbital')
 
-        graph_maker(remainingTallies, 'Launches Remaining', 'Launches Remaining for This Month by Organization\n', orgs, scroll.layout, 6, 1)
+        graph_maker(remainingTallies, 'Launches Remaining', 'Launches Remaining for This Month by Organization\n', orgs, scroll.layout, 5, 1)
         #=============================================================================================================================
         # Creating the second graph that shows total launches so far for the year
         # added in Version 0.80
@@ -703,7 +704,7 @@ class App(QMainWindow):
         # The Organizations
         orgs = ('SpaceX', 'China', 'ULA', 'India', 'Rocket\nLabs', 'Japan', 'Ariane\nSpace', 'Russia', 'Northrop', 'Blue\nOrigin', 'ILS')
 
-        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2020 by Organization\n', orgs, scroll.layout, 7, 1)
+        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2020 by Organization\n', orgs, scroll.layout, 6, 1)
         #=================================================================================================
         # Creating the third graph, which shows  the total launches for the previous year
         # Added V0.85
@@ -715,7 +716,7 @@ class App(QMainWindow):
         # The tallies
         historyTallies = [astroGraphV85.spaceXCount, astroGraphV85.chinaCount, astroGraphV85.ulaCount, astroGraphV85.indiaCount, astroGraphV85.rocketCount, astroGraphV85.japaneseCount, astroGraphV85.arianeCount, astroGraphV85.russiaCount, astroGraphV85.northCount, astroGraphV85.blueOrigin, astroGraphV85.ilsCount]
 
-        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2019 by Organization\n', orgs, scroll.layout, 8, 1)
+        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2019 by Organization\n', orgs, scroll.layout, 7, 1)
 
         self.welcomeTab.setLayout(self.welcomeTab.layout)
         #=================================================================================================

@@ -9,15 +9,12 @@
 sudo apt-get install -y python3-pip python3-pyqt5 python3-dateutil python3-tk python3-pyqt5.qtwebengine python3-setuptools
 
 # Next we install the libaries installed by pip
-sudo pip3 install matplotlib
-sudo pip3 install lxml
-sudo pip3 install bs4
-sudo pip3 install scrapy
+python3 -m pip install matplotlib lxml bs4 scrapy
 
-# copying the files to a . folder.
+# removes the folder, then copies the files to a . folder.
+rm -rf /home/$USER/.AstroNinja
 mkdir /home/$USER/.AstroNinja
 
-cd "${0%/*}"
 cp -r ./* /home/$USER/.AstroNinja
 
 # moving the desktop shortcut to the desktop

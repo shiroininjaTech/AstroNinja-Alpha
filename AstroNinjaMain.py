@@ -208,7 +208,7 @@ class App(QMainWindow):
         # Set the central widget
         central_widget = QWidget(self)          # Create a central widget
         self.setCentralWidget(central_widget)
-        grid_layout = QGridLayout(self)         # Create a QGridLayout
+        grid_layout = QGridLayout()         # Create a QGridLayout
         central_widget.setLayout(grid_layout)   # Set Layout to central widget
 
         # Setting fonts
@@ -580,7 +580,7 @@ class App(QMainWindow):
         #==========================================================================================
 
         # Configuring the tab's layout
-        self.welcomeTab.layout =  QGridLayout(self)
+        self.welcomeTab.layout =  QGridLayout()
         #self.welcomeTab.layout.setRowStretch(1, 5)
 
         # Building the scrollbars
@@ -1033,7 +1033,7 @@ class App(QMainWindow):
         #==========================================================================================
 
         # Configuring the tab's layout
-        self.issTab.layout =  QGridLayout(self)
+        self.issTab.layout =  QGridLayout()
 
         # Building the scrollbars
         scrollBuilder(self.issTab.layout, 0, 0)

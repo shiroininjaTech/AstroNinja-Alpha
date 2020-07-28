@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 07/12/20
+   * Date Modified: 07/27/20
 """
 """
    * Changelog:
@@ -75,7 +75,7 @@ import astroNinjaV85
 from PyQt5 import QtWebEngineWidgets
 from PyQt5 import QtWebEngineCore
 from PyQt5.QtWebEngineWidgets import QWebEngineSettings
-#import youtubeTest
+import spaceXlaunch
 import xNewsV85
 import issPortal
 import scrapy
@@ -88,6 +88,7 @@ from astro_spider.astro_spider.spiders import crewSpider
 from astro_spider.astro_spider.spiders import scheduleSpider
 from astro_spider.astro_spider.spiders import hubbleSpider
 from astro_spider.astro_spider.spiders import MoreNews
+from astro_spider.astro_spider.spiders import youtuber
 
 PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
@@ -280,6 +281,8 @@ class App(QMainWindow):
             yield process5.crawl(hubbleSpider.HubblespiderSpider)
             process6 = CrawlerRunner({'ITEM_PIPELINES': {'xNewsV85.ItemCollectorPipeline': 2000}})
             yield process6.crawl(MoreNews.MorenewsSpider)
+            process7 = CrawlerRunner({'ITEM_PIPELINES': {'spaceXlaunch.MoreCollectorPipeline': 2000}})
+            yield process7.crawl(youtuber.YoutuberSpider)
             #process.start(stop_after_crawl=False)
             reactor.stop()
             return
@@ -620,14 +623,14 @@ class App(QMainWindow):
         # video by the SpaceX youtube channel.
         # Also will enable the livestreaming of launches.
 
+        spaceXlaunch.liftOff()
         # Building the SpaceX Lens object
-        """
         frameBuilder(scroll.layout, 3, 1, 750, False)
         frameLayout.addItem(horizSpacer, 1, 1)
         vert_Spacer(frameLayout, 20, 20)
 
         # Building the webObject using the web_wrapper() function added with V0.85.
-        web_wrapper(youtubeTest.fullURL, 700, frameLayout, 2, 1)
+        web_wrapper(spaceXlaunch.fixedLink, 700, frameLayout, 2, 1)
         frameLayout.addItem(horizSpacer, 3, 1)
 
         # building the header frame
@@ -636,12 +639,12 @@ class App(QMainWindow):
         windowMessage = "SpaceX Lens"
         headerBuild(windowMessage, 0, 0, frameLayout, 50)
         # The mission name header
-        missionTitle = "%s" % youtubeTest.newestName
+        missionTitle = "%s" % spaceXlaunch.missionTitle[0]
         headerBuild(missionTitle, 0, 2, frameLayout, 50)
         """
-            #Use a smaller font for the mission title if it's
-            #longer than 25 char. This prevents cutting off of
-            #parts of the header.
+            Use a smaller font for the mission title if it's
+            longer than 25 char. This prevents cutting off of
+            parts of the header.
         """
         if len(missionTitle) >= 25:
             self.header.setFont(smallerHeader)
@@ -651,7 +654,7 @@ class App(QMainWindow):
         vDivider.setFrameShape(QFrame.VLine)
         vDivider.setLineWidth(3)
         frameLayout.addWidget(vDivider, 0, 1)
-        """
+
         #============================================================================================================================
         # Adding the Mars Weather service to AstroNinja.
         # A simple embed using QtWebEngineWidgets as a container.
@@ -659,7 +662,7 @@ class App(QMainWindow):
         #============================================================================================================================
 
         # Building the Mars Meteorologist  Object
-        frameBuilder(scroll.layout, 3, 1, 750, False)
+        frameBuilder(scroll.layout, 4, 1, 750, False)
         frameLayout.addItem(horizSpacer, 1, 1)
         vert_Spacer(frameLayout, 20, 20)
         web_wrapper("https://mars.nasa.gov/layout/embed/image/insightweather/", 720, frameLayout, 2, 1)
@@ -689,7 +692,7 @@ class App(QMainWindow):
         # The Organizations
         orgs = ('SpaceX', 'China', 'JAXA', 'ULA', 'Rocket\nLabs', 'India', 'ArianeSpace', 'Russia', 'Northrop', 'Eurockot', 'Virgin\nOrbital')
 
-        graph_maker(remainingTallies, 'Launches Remaining', 'Launches Remaining for This Month by Organization\n', orgs, scroll.layout, 5, 1)
+        graph_maker(remainingTallies, 'Launches Remaining', 'Launches Remaining for This Month by Organization\n', orgs, scroll.layout, 6, 1)
         #=============================================================================================================================
         # Creating the second graph that shows total launches so far for the year
         # added in Version 0.80
@@ -704,7 +707,7 @@ class App(QMainWindow):
         # The Organizations
         orgs = ('SpaceX', 'China', 'ULA', 'India', 'Rocket\nLabs', 'Japan', 'Ariane\nSpace', 'Russia', 'Northrop', 'Blue\nOrigin', 'ILS')
 
-        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2020 by Organization\n', orgs, scroll.layout, 6, 1)
+        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2020 by Organization\n', orgs, scroll.layout, 7, 1)
         #=================================================================================================
         # Creating the third graph, which shows  the total launches for the previous year
         # Added V0.85
@@ -716,7 +719,7 @@ class App(QMainWindow):
         # The tallies
         historyTallies = [astroGraphV85.spaceXCount, astroGraphV85.chinaCount, astroGraphV85.ulaCount, astroGraphV85.indiaCount, astroGraphV85.rocketCount, astroGraphV85.japaneseCount, astroGraphV85.arianeCount, astroGraphV85.russiaCount, astroGraphV85.northCount, astroGraphV85.blueOrigin, astroGraphV85.ilsCount]
 
-        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2019 by Organization\n', orgs, scroll.layout, 7, 1)
+        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2019 by Organization\n', orgs, scroll.layout, 8, 1)
 
         self.welcomeTab.setLayout(self.welcomeTab.layout)
         #=================================================================================================

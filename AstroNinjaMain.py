@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 07/27/20
+   * Date Modified: 08/06/20
 """
 """
    * Changelog:
@@ -553,7 +553,7 @@ class App(QMainWindow):
         def web_wrapper(urlItem, maxHeight, container, xPos, yPos):
 
             self.webView = QtWebEngineWidgets.QWebEngineView()     # creating the webengine object
-            self.webView.setUrl(QUrl(urlItem))         # setting the URL
+            self.webView.setHtml(urlItem)         # setting the URL
             self.webView.adjustSize()
             self.webView.setMinimumHeight(maxHeight)
 
@@ -630,7 +630,9 @@ class App(QMainWindow):
         vert_Spacer(frameLayout, 20, 20)
 
         # Building the webObject using the web_wrapper() function added with V0.85.
-        web_wrapper(spaceXlaunch.fixedLink, 700, frameLayout, 2, 1)
+
+        embed = "<iframe width='100%' height='100%' src='{}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>".format(spaceXlaunch.fixedLink)
+        web_wrapper(embed, 700, frameLayout, 2, 1)
         frameLayout.addItem(horizSpacer, 3, 1)
 
         # building the header frame
@@ -868,11 +870,15 @@ class App(QMainWindow):
 
 
 
+
+                # Fixed in 0.90 Alpha, removed extra image url if there is one.
+                picUrl = xNewsV85.listedImg[d]
+                head, sep, tail = picUrl.partition('.jpg')
+                picUrl = head+sep
+
                 # FIXED IN VERSION 0.85: fixes inability to load urls that contain
                 # non-unicode characters by using the parse module in the urllib library.
                 # Uses urllib.parse.quote to correctly quote/escape unicode characters
-                picUrl = xNewsV85.listedImg[d]
-
                 if len(picUrl) == 0:
 
                     horizSpacer = QSpacerItem(50, 50, QSizePolicy.Maximum, QSizePolicy.Expanding)
@@ -936,8 +942,8 @@ class App(QMainWindow):
             global positionKeeper
 
             # Removing unwanted articles from space.com
-            naughtyArticles = ['Pictures from space!', 'The top space stories of the week!']                        # The list of articles to look for
-            if naughtyArticles[0] in xNewsV85.listedTitle[a] or naughtyArticles[1] in xNewsV85.listedTitle[a]:      # if the title matches one of naughtyArticles
+            naughtyArticles = ['Pictures from space!', 'The top space stories of the week!', 'Join Space.com']                        # The list of articles to look for
+            if naughtyArticles[0] in xNewsV85.listedTitle[a] or naughtyArticles[1] in xNewsV85.listedTitle[a] or naughtyArticles[2] in xNewsV85.listedTitle[a]:      # if the title matches one of naughtyArticles
                 #newsListBuilder(a, a, positionvar, a)
                 countKeeper += 1
 

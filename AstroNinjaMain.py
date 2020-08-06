@@ -550,14 +550,23 @@ class App(QMainWindow):
 
         # A function that creates web objects, kind of a way to build a webpage into a widget.
 
-        def web_wrapper(urlItem, maxHeight, container, xPos, yPos):
+        def web_wrapper(urlItem, maxHeight, container, xPos, yPos, vidOb):
 
-            self.webView = QtWebEngineWidgets.QWebEngineView()     # creating the webengine object
-            self.webView.setHtml(urlItem)         # setting the URL
-            self.webView.adjustSize()
-            self.webView.setMinimumHeight(maxHeight)
+            if vidOb == True:
+                self.webView = QtWebEngineWidgets.QWebEngineView()     # creating the webengine object
+                self.webView.setHtml(urlItem)         # setting the URL
+                self.webView.adjustSize()
+                self.webView.setMinimumHeight(maxHeight)
 
-            container.addWidget(self.webView, xPos, yPos)
+                container.addWidget(self.webView, xPos, yPos)
+
+            elif vidOb == False:
+                self.webView = QtWebEngineWidgets.QWebEngineView()     # creating the webengine object
+                self.webView.setUrl(QUrl(urlItem))         # setting the URL
+                self.webView.adjustSize()
+                self.webView.setMinimumHeight(maxHeight)
+
+                container.addWidget(self.webView, xPos, yPos)
 
         # A better function to create label widgets in PyQt5.
         # Takes the string to be shown as message.
@@ -632,7 +641,7 @@ class App(QMainWindow):
         # Building the webObject using the web_wrapper() function added with V0.85.
 
         embed = "<iframe width='100%' height='100%' src='{}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>".format(spaceXlaunch.fixedLink)
-        web_wrapper(embed, 700, frameLayout, 2, 1)
+        web_wrapper(embed, 700, frameLayout, 2, 1, True)
         frameLayout.addItem(horizSpacer, 3, 1)
 
         # building the header frame
@@ -667,7 +676,7 @@ class App(QMainWindow):
         frameBuilder(scroll.layout, 4, 1, 750, False)
         frameLayout.addItem(horizSpacer, 1, 1)
         vert_Spacer(frameLayout, 20, 20)
-        web_wrapper("https://mars.nasa.gov/layout/embed/image/insightweather/", 720, frameLayout, 2, 1)
+        web_wrapper("https://mars.nasa.gov/layout/embed/image/insightweather/", 720, frameLayout, 2, 1, False)
         frameLayout.addItem(horizSpacer, 3, 1)
 
         # building the header frame

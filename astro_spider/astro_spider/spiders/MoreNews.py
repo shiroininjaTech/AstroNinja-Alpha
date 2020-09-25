@@ -61,6 +61,11 @@ class MorenewsSpider(scrapy.Spider):
                 bodyItems.pop(current)                  # of the related tag + 1. Must be popped first.
                 bodyItems.pop(bodyItems.index(i))       # Then we pop the Related: tag.
 
+        # Getting the different types of possible images
+        mainImage = "".join(response.xpath("//div[contains(@class, 'box')]//img/@src").extract())
+        altImage  = response.xpath("//p[contains(@class, 'vanilla-image-block')]//img/@data-original-mos").extract()[0]
+
+
         # Fixing the spacing of the items, so smaller items don't get indented.
         betterSpaced = []
         for i in bodyItems:
@@ -70,15 +75,19 @@ class MorenewsSpider(scrapy.Spider):
             else:
                 betterSpaced.append(" " + i)
 
-
+        if len(mainImage) == 0:
+            imageUsed = altImage
+        else:
+            imageUsed = mainImage
         article = {
             'title' : "".join(response.xpath("//h1//text()").extract()),
             'date'  : fixedDate,
             'body'  : "".join(betterSpaced),
-            'image'   : "".join(response.xpath("//div[contains(@class, 'box')]//img/@src").extract())
+            'image'   : imageUsed,
 
         }
 
 
-        #concatenate_list(article['body'])
+
+
         yield article

@@ -6,7 +6,7 @@ from scrapy.http.request import Request
 class LaunchhistorySpider(scrapy.Spider):
     name = 'launchHistory'
     allowed_domains = ['rocketlaunch.live']
-    start_urls = ['https://www.rocketlaunch.live/?pastOnly=1&page=1', 'https://www.rocketlaunch.live/?pastOnly=1&page=2','https://www.rocketlaunch.live/?pastOnly=1&page=3', 'https://www.rocketlaunch.live/?pastOnly=1&page=4', 'https://www.rocketlaunch.live/?pastOnly=1&page=5', 'https://www.rocketlaunch.live/?pastOnly=1&page=6', 'https://www.rocketlaunch.live/?pastOnly=1&page=7']
+    start_urls = ['https://www.rocketlaunch.live/?pastOnly=1&page=1', 'https://www.rocketlaunch.live/?pastOnly=1&page=2','https://www.rocketlaunch.live/?pastOnly=1&page=3', 'https://www.rocketlaunch.live/?pastOnly=1&page=4', 'https://www.rocketlaunch.live/?pastOnly=1&page=5', 'https://www.rocketlaunch.live/?pastOnly=1&page=6', 'https://www.rocketlaunch.live/?pastOnly=1&page=7', 'https://www.rocketlaunch.live/?pastOnly=1&page=8']
 
     custom_settings = {'LOG_ENABLED': False,
     }
@@ -28,6 +28,7 @@ class LaunchhistorySpider(scrapy.Spider):
             'blueDate' : response.xpath(".//div[contains(@class, 'company-blue-origin')]/div[@class='large-2 medium-2 small-3 columns']/div[@data-sortdate]/@title").extract(),
             'ilsDate' : response.xpath(".//div[contains(@class, 'company-international-launch-services-ils')]/div[@class='large-2 medium-2 small-3 columns']/div[@data-sortdate]/@title").extract(),
             'rusMil' : response.xpath(".//div[contains(@class, 'company-russian-military')]/div[@class='large-2 medium-2 small-3 columns']/div[@data-sortdate]/@title").extract(),
+            'expace' : response.xpath(".//div[contains(@class, 'company-expace-china')]/div[@class='large-2 medium-2 small-3 columns']/div[@data-sortdate]/@title").extract(),
 
 
         }

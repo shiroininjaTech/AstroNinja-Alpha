@@ -657,7 +657,7 @@ class App(QMainWindow):
 
         # Building the webObject using the web_wrapper() function added with V0.85.
 
-        embed = "<iframe width='100%' height='100%' src='{}' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>".format(spaceXlaunch.fixedLink)
+        embed = "<iframe width='100%' height='100%' src='{}' frameborder='0' scrolling='no' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>".format(spaceXlaunch.fixedLink)
         web_wrapper(embed, 700, frameLayout, 2, 1, True)
         frameLayout.addItem(horizSpacer, 3, 1)
 

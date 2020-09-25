@@ -7,7 +7,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  01/23/18
-   * Date Modified: 05/31/20
+   * Date Modified: 09/23/20
 """
 """
    * Changelog:
@@ -15,12 +15,6 @@
 
 # All the neccesary imports.
 import re
-import requests, bs4
-import time, os
-from datetime import date
-import calendar
-from dateutil import parser
-import sys
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *

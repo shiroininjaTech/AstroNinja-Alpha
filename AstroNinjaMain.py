@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 08/06/20
+   * Date Modified: 09/25/20
 """
 """
    * Changelog:
@@ -139,6 +139,23 @@ class App(QMainWindow):
         def restart_program():
             python = sys.executable
             os.execl(python, python, * sys.argv)
+
+
+        """
+            A function for updating the app, to be added to main menu.
+            Added in V0.90 Beta.
+        """
+
+        def update_program(self):
+            # Running terminal commands that will run an update shell script that mimics the
+            # Installation script.
+            os.system('rm -rf /home/$USER/Downloads/AstroNinja-Alpha')
+            os.system('git clone https://github.com/shiroininjaTech/AstroNinja-Alpha.git /home/$USER/Downloads/AstroNinja-Alpha')
+            os.system('chmod +x /home/$USER/Downloads/AstroNinja-Alpha/update.sh')
+            os.system('x-terminal-emulator -e /home/$USER/Downloads/AstroNinja-Alpha/update.sh') # will open a terminal for the user can enter their password
+
+            # Next we'll restart the app with it's changes.
+            restart_program()
 
         """
             The functions for the Theme menu items
@@ -964,7 +981,7 @@ class App(QMainWindow):
             return
 
         # Build the news list until we reach the end of the data
-        while countKeeper < len(xNewsV85.listedTitle):
+        while countKeeper != len(xNewsV85.listedTitle):
             iterator(countKeeper, positionKeeper)
 
         self.spacexTab.setLayout(self.spacexTab.layout)
@@ -1238,7 +1255,7 @@ class App(QMainWindow):
         #=======================================================================
 
 
-        iconList = [os.path.expanduser("~/.AstroNinja/Images/Icons/exit.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/about.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/information.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/refresh.png")]
+        iconList = [os.path.expanduser("~/.AstroNinja/Images/Icons/exit.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/about.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/information.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/refresh.png"), os.path.expanduser("~/.AstroNinja/Images/Icons/update.png")]
 
 
         # The menu item builder
@@ -1266,6 +1283,7 @@ class App(QMainWindow):
         aboutAct = buildMenuItemAction(iconList[1], toggler, "Build Information", "&About", clickMethod)                          # About Option
         sourceAct = buildMenuItemAction(iconList[2], toggler, "List of Sources Used By AstroNinja", "&Sources", sourceMethod)     # Sources option
         refreshAct = buildMenuItemAction(iconList[3], toggler, "Refreshes The Window", "&Reload", restart_program)                # Refresh option
+        updateAct =  buildMenuItemAction(iconList[4], toggler, "Check for Updates", "&Update", update_program)
         toggler = False                                                                                                           # The rest of the options have no icons
         marineAct = buildMenuItemAction(iconList[0], toggler, "A More Subtle Theme", "&Marine", Marine)                           # Default Theme
         spacexAct = buildMenuItemAction(iconList[0], toggler, "A Theme based On SpaceX and The Default Theme", "&SpaceX", Spacex) # SpaceX Theme
@@ -1286,6 +1304,7 @@ class App(QMainWindow):
             astroThemesV85.brocoMenu(menubar)
         fileMenu = menubar.addMenu('&Menu')
         fileMenu.addAction(refreshAct)
+        fileMenu.addAction(updateAct)
         fileMenu.addAction(sourceAct)
         fileMenu.addAction(aboutAct)
         fileMenu.addSeparator()

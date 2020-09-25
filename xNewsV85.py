@@ -72,6 +72,8 @@ def intestellar_News(sorter):
         listedBody.append(re.sub('(:?[a-zA-Z0-9\,\:\"\'\)\*\(\-\-\]\[_])\n\n\t', r'\1 ', linkDict['body']))           # Adding the article's body/if there is a letter or number before newlines, remove them
         listedImg.append(linkDict['image'])
 
+
+
         # If there is no image provided with the article, use a generic one (prevents crashes)
         # No longer needed, found a better fix that displays articles even if there is no image.
         """
@@ -80,6 +82,7 @@ def intestellar_News(sorter):
         else:
             listedImg.append(linkDict['image'])
         """
+
     return
 
 
@@ -112,5 +115,7 @@ def hubbleViewz(sorter):
             descriptions.append(i)
         for i in hubbleDict['header']:
             headers.append(i)
+
+
 #phoneHome()
 #hubbleViewz()

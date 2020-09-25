@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created: 01/11/18
-   * Date Modified: 06/13/20
+   * Date Modified: 09/22/20
 """
 
 import AstroNinjaMain
@@ -337,7 +337,9 @@ def historian(year):
     sortedRusMil = datlistFix('rusMil')
     sortedRussia = sortedRussia + sortedRusMil          # Adding Russian Military launches to the Russian list.
     sortedRussia = list(dict.fromkeys(sortedRussia))    # Removing duplicates.
-
+    sortedXpace = datlistFix('expace')
+    sortedChina = sortedChina + sortedXpace
+    sortedChina = list(dict.fromkeys(sortedChina))
     #print(sortedSpacex)
     #print(sortedChina)
     # The global variables to be passed to the front end to build graphs

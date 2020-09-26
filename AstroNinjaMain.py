@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 09/25/20
+   * Date Modified: 09/26/20
 """
 """
    * Changelog:
@@ -349,14 +349,6 @@ class App(QMainWindow):
 
         def frameBuilder(a, b, c,  d, e ):
             self.frame = QFrame()
-            """
-            if themeSelected == 'marine':
-                astroThemesV85.defaultFrame(self.frame)
-            if themeSelected == 'spaceX':
-                astroThemesV85.spacexFrame(self.frame)
-
-            if themeSelected == 'broco':
-                astroThemesV85.brocoFrame(self.frame)"""
 
             self.frame.setFrameShape(QFrame.Box)
             #self.nextframe.setFixedSize(150, 150)
@@ -968,8 +960,8 @@ class App(QMainWindow):
             global positionKeeper
 
             # Removing unwanted articles from space.com
-            naughtyArticles = ['Pictures from space!', 'The top space stories of the week!', 'Join Space.com']                        # The list of articles to look for
-            if naughtyArticles[0] in xNewsV85.listedTitle[a] or naughtyArticles[1] in xNewsV85.listedTitle[a] or naughtyArticles[2] in xNewsV85.listedTitle[a]:      # if the title matches one of naughtyArticles
+            naughtyArticles = ['Pictures from space!', 'The top space stories of the week!', 'Join Space.com', ': Full review']                        # The list of articles to look for
+            if naughtyArticles[0] in xNewsV85.listedTitle[a] or naughtyArticles[1] in xNewsV85.listedTitle[a] or naughtyArticles[2] in xNewsV85.listedTitle[a] or naughtyArticles[3] in xNewsV85.listedTitle[a]:      # if the title matches one of naughtyArticles
                 #newsListBuilder(a, a, positionvar, a)
                 countKeeper += 1
 

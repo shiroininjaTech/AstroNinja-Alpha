@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 09/27/20
+   * Date Modified: 09/28/20
 """
 """
    * Changelog:
@@ -650,7 +650,7 @@ class App(QMainWindow):
         # Building the webObject using the web_wrapper() function added with V0.85.
 
         embed = "<body padding='0px' style='background-color: #778899;'> <iframe width='100%' height='100%' allowtransparency='true' style='background: Darkslategray; position: fixed; top:0; left:0; bottom:0; right:0;' src='{}' frameborder='0' scrolling='no' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>".format(spaceXlaunch.fixedLink)
-        web_wrapper(embed, 400, frameLayout, 2, 1, True)
+        web_wrapper(embed, 700, frameLayout, 2, 1, True)
         frameLayout.addItem(horizSpacer, 3, 1)
 
         # building the header frame

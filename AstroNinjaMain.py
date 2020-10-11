@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 09/28/20
+   * Date Modified: 10/11/20
 """
 """
    * Changelog:
@@ -1139,7 +1139,7 @@ class App(QMainWindow):
         frameBuilder(scroll.layout, 1, 1, 750, False )
 
         # the header
-        crewHead = "Current ISS Residents                                                         Expedition 63"
+        crewHead = "Current Expedition Crew                                                         Expedition 64"
         #self.resLabel = QLabel("Current ISS Residents\n\nExpedition 62", self)
         headerBuild(crewHead, 1, 1, frameLayout, 70)
 

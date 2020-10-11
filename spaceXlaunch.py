@@ -6,7 +6,7 @@
 """
    * Written By : Tom Mullins
    * Created:  07/24/20
-   * Modified: 07/27/20
+   * Modified: 10/10/20
 """
 
 global spacexDump
@@ -36,7 +36,11 @@ def liftOff():
 
     # Turning the link into an embed link.
     global fixedLink
-    fixedLink = link[0].replace('https://youtu.be/', 'https://www.youtube.com/embed/')
+    if '#update' in link[0]:
+        fixedLink = 'https://www.spacex.com/launches/#update'
+
+    else:
+        fixedLink = link[0].replace('https://youtu.be/', 'https://www.youtube.com/embed/')
     #print(fixedLink)
 
     return

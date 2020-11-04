@@ -34,13 +34,20 @@ class HubblespiderSpider(scrapy.Spider):
             joinedDesc = " ".join(fullDesc)             # combining all the found objects.
             head, sep, tail, = joinedDesc.partition('Credit:')  # Seperating the string by "Credit:"
             descDat.append(head)                        # Adding only everything from before "Credit:" to the list.
-    
+
 
         # Fixing the found items in the xpath of the photo's metadata.
         # This ensures we only get the date of the image so they can be sorted.
         date =  response.xpath("//tr[3]/td[2]//text()").extract_first()                 # Just get the first item found, which will be the date.
         head, sep, tail = date.partition(', ')                                          # use partition() to seperate the item on the comma
         fixedDate = head                                                                # Getting the head, which is everything in front of the partition (the actual date)
+
+        # Catches the object above where the date is supposed to be if it isn't
+        # there. Prevents a parsing error in xNews module.
+        if "px" in fixedDate:
+            date =  response.xpath("//tr[2]/td[2]//text()").extract_first()                 
+            head, sep, tail = date.partition(', ')
+            fixedDate = head
 
 
         potwData = {

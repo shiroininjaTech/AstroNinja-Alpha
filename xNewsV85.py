@@ -7,7 +7,7 @@
 """
    * Written By : Tom Mullins
    * Created:  04/30/18
-   * Modified: 06/09/20
+   * Modified: 11/04/20
 """
 import re
 from dateutil import parser
@@ -95,6 +95,7 @@ def intestellar_News(sorter):
 def hubbleViewz(sorter):
 
     # Sorting the Pictures of the week from hubble by newest.
+
     if sorter == 'Newest':
         sortedResults = sorted(hubbleData, key = lambda i: parser.parse(i['hubbleDate']), reverse=True)
     if sorter == 'Oldest':

@@ -6,7 +6,7 @@
 """
    * Written By : Tom Mullins
    * Created:  07/24/20
-   * Modified: 10/10/20
+   * Modified: 11/11/20
 """
 
 global spacexDump
@@ -36,7 +36,11 @@ def liftOff():
 
     # Turning the link into an embed link.
     global fixedLink
-    if '#update' in link[0]:
+
+    if len(link) == 0:
+        fixedLink = 'https://www.spacex.com/launches/#update'
+        missionTitle.append("Upcoming Mission")
+    elif '#update' in link[0]:
         fixedLink = 'https://www.spacex.com/launches/#update'
 
     else:

@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 11/29/20
+   * Date Modified: 12/12/20
 """
 """
    * Changelog:
@@ -691,7 +691,7 @@ class App(QMainWindow):
         frameBuilder(scroll.layout, 4, 1, 750, False)
         frameLayout.addItem(horizSpacer, 1, 1)
         vert_Spacer(frameLayout, 20, 20)
-        web_wrapper("https://mars.nasa.gov/layout/embed/image/insightweather/", 720, frameLayout, 2, 1, False)
+        web_wrapper("https://mars.nasa.gov/layout/embed/image/mslweather/", 720, frameLayout, 2, 1, False)
         frameLayout.addItem(horizSpacer, 3, 1)
 
         # building the header frame

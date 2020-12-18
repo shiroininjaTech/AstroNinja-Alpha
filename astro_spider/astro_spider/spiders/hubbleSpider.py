@@ -44,8 +44,8 @@ class HubblespiderSpider(scrapy.Spider):
 
         # Catches the object above where the date is supposed to be if it isn't
         # there. Prevents a parsing error in xNews module.
-        if "px" in fixedDate:
-            date =  response.xpath("//tr[2]/td[2]//text()").extract_first()                 
+        if "px" in fixedDate or "heic" in fixedDate:
+            date =  response.xpath("//tr[2]/td[2]//text()").extract_first()
             head, sep, tail = date.partition(', ')
             fixedDate = head
 

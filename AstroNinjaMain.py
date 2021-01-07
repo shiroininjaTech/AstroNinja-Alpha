@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created:  10/13/17
-   * Date Modified: 12/12/20
+   * Date Modified: 01/07/21
 """
 """
    * Changelog:
@@ -725,7 +725,7 @@ class App(QMainWindow):
         #=============================================================================================================================
 
         # Running function that scrapes launch history in the backend module
-        astroGraphV85.historian('2020')
+        astroGraphV85.historian('2021')
 
         # The tallies
         historyTallies = [astroGraphV85.spaceXCount, astroGraphV85.chinaCount, astroGraphV85.ulaCount, astroGraphV85.indiaCount, astroGraphV85.rocketCount, astroGraphV85.japaneseCount, astroGraphV85.arianeCount, astroGraphV85.russiaCount, astroGraphV85.northCount, astroGraphV85.blueOrigin, astroGraphV85.ilsCount]
@@ -733,19 +733,19 @@ class App(QMainWindow):
         # The Organizations
         orgs = ('SpaceX', 'China', 'ULA', 'India', 'Rocket\nLabs', 'Japan', 'Ariane\nSpace', 'Russia', 'Northrop', 'Blue\nOrigin', 'ILS')
 
-        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2020 by Organization\n', orgs, scroll.layout, 7, 1)
+        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2021 by Organization\n', orgs, scroll.layout, 7, 1)
         #=================================================================================================
         # Creating the third graph, which shows  the total launches for the previous year
         # Added V0.85
         #=================================================================================================
 
         # Running function that scrapes launch history in the backend module
-        astroGraphV85.historian('2019')
+        astroGraphV85.historian('2020')
 
         # The tallies
         historyTallies = [astroGraphV85.spaceXCount, astroGraphV85.chinaCount, astroGraphV85.ulaCount, astroGraphV85.indiaCount, astroGraphV85.rocketCount, astroGraphV85.japaneseCount, astroGraphV85.arianeCount, astroGraphV85.russiaCount, astroGraphV85.northCount, astroGraphV85.blueOrigin, astroGraphV85.ilsCount]
 
-        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2019 by Organization\n', orgs, scroll.layout, 8, 1)
+        graph_maker(historyTallies, 'Launch Totals', 'Total Launches For 2020 by Organization\n', orgs, scroll.layout, 8, 1)
 
         self.welcomeTab.setLayout(self.welcomeTab.layout)
         #=================================================================================================

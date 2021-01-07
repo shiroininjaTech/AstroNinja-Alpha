@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created: 01/11/18
-   * Date Modified: 09/22/20
+   * Date Modified: 01/07/21
 """
 
 import AstroNinjaMain
@@ -78,7 +78,65 @@ def tally_ho(x, y):
         global changedSlice, changedSlice2, todaySlice, todaydateStr
 
         # converting the launch date so that it can be compared to the current month.
-        parsedDate = str(parser.parse(launchDate))
+
+        if 'NET' in launchDate and '/' in launchDate:
+            noNet = launchDate[4:]
+
+            fixer = re.sub(r'/.*', '', noNet)
+            #print(fixer)
+            dateChange = parser.parse(fixer)
+            # Changing the date objects to strings because computers are stupid.
+            changedateStr = str(dateChange)
+        elif '/' in launchDate:
+            fixer = re.sub(r'/.*', '', launchDate)
+            dateChange = parser.parse(fixer)
+
+            # Changing the date objects to strings because computers are stupid.
+            changedateStr = str(dateChange)
+
+        elif '1st Quarter' in launchDate:
+            launchDate = 'January'
+            dateChange = parser.parse(launchDate)
+            changedateStr = str(dateChange)
+
+        elif 'TBD' in launchDate or 'First Quarter' in launchDate:
+            launchDate= 'January'
+            dateChange = parser.parse(launchDate)
+            changedateStr = str(dateChange)
+
+        elif 'Early' in launchDate:
+            notEarly = launchDate[6:]
+            changedateStr = str(parser.parse(notEarly))
+
+        elif 'NET' in launchDate:
+            noNet = launchDate[4:]
+
+            if 'Late' in noNet:
+                noNet = noNet[5:]
+
+            dateChange = parser.parse(noNet)
+            changedateStr = str(dateChange)
+
+
+        elif 'Late' in launchDate:
+            notLate = launchDate[5:]
+            dateChange = parser.parse(notLate)
+            changedateStr = str(dateChange)
+
+
+        elif 'Mid' in launchDate:
+            noMids = launchDate[4:]
+            dateChange = parser.parse(noMids)
+            changedateStr = str(dateChange)
+
+        else:
+            dateChange = parser.parse(launchDate)
+
+            # Changing the date objects to strings because computers are stupid.
+            changedateStr = str(dateChange)
+
+
+        parsedDate = str(parser.parse(changedateStr))
         changedSlice = parsedDate[0:10]
 
         # Converting today's date so it can be compared to the launch month.

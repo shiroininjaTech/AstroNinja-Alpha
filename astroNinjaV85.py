@@ -9,7 +9,7 @@ from __future__ import unicode_literals
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created: 10/03/17
-   * Date Modified: 06/22/2020
+   * Date Modified: 01/07/2021
 """
 """
    * Changelog:
@@ -91,11 +91,22 @@ def armStrong():
             dateChange = parser.parse(dateFake)
             changedateStr = str(dateChange)
 
+        elif '1st Quarter' in dateName2:
+            dateName2 = 'January'
+            dateChange = parser.parse(dateName2)
+            changedateStr = str(dateChange)
+
+
         elif 'NET' in dateName2:
             noNet = dateName2[4:]
 
+            if 'Late' in noNet:
+                noNet = noNet[5:]
+
             dateChange = parser.parse(noNet)
             changedateStr = str(dateChange)
+
+
 
         elif 'Early' in dateName2:
             notEarly = dateName2[6:]
@@ -123,7 +134,7 @@ def armStrong():
         # Temporary fix for parsed date showing the current year instead of the next
         # year
         if int(todaydateStr[5:7]) == 12 and int(changedateStr[5:7]) < 12:
-            changedSlice = changedateStr.replace('2019', '2020')
+            changedSlice = changedateStr.replace('2020', '2021')
             changedSlice = changedSlice[0:10]
 
     # a function that compares the launch date to the current date so
@@ -218,6 +229,11 @@ def update_launch(counter):
         # Changing the date objects to strings because computers are stupid.
         changedateStr = str(dateChange)
 
+    elif '1st Quarter' in dateName2:
+        dateName2 = 'January'
+        dateChange = parser.parse(dateName2)
+        changedateStr = str(dateChange)
+
     elif 'TBD' in dateName2 or 'First Quarter' in dateName2:
         dateName2 = 'January'
         dateChange = parser.parse(dateName2)
@@ -227,18 +243,21 @@ def update_launch(counter):
         notEarly = dateName2[6:]
         changedateStr = str(parser.parse(notEarly))
 
+    elif 'NET' in dateName2:
+        noNet = dateName2[4:]
+
+        if 'Late' in noNet:
+            noNet = noNet[5:]
+
+        dateChange = parser.parse(noNet)
+        changedateStr = str(dateChange)
+
+
     elif 'Late' in dateName2:
         notLate = dateName2[5:]
         dateChange = parser.parse(notLate)
         changedateStr = str(dateChange)
 
-    elif 'NET' in dateName2:
-        noNet = dateName2[4:]
-
-        dateChange = parser.parse(noNet)
-
-        # Changing the date objects to strings because computers are stupid.
-        changedateStr = str(dateChange)
 
     elif 'Mid' in dateName2:
         noMids = dateName2[4:]

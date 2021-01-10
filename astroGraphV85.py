@@ -8,7 +8,7 @@
    * Written By: Tom Mullins
    * Version: 0.85
    * Date Created: 01/11/18
-   * Date Modified: 01/07/21
+   * Date Modified: 01/10/21
 """
 
 import AstroNinjaMain
@@ -183,10 +183,11 @@ def tally_ho(x, y):
                  russiaCount += 1
              elif 'Eurockot' in astroNinjaV85.scheduleList[y]:
                  euroCount += 1
-             elif 'Northrop Grumman' and 'International Launch Services' not in astroNinjaV85.scheduleList[y]:
-                 northCount += 1
              elif 'Virgin Orbit' in astroNinjaV85.scheduleList[y]:
                  virginCount += 1
+             elif 'Northrop Grumman' and 'International Launch Services' not in astroNinjaV85.scheduleList[y]:
+                 northCount += 1
+
 
 
     # Haven't found fixes for these, so they're skipped for now.
